@@ -1,0 +1,19 @@
+{
+  "info": {
+    "name": "Zoo Visitors FastAPI 2569",
+    "description": "ทดสอบ GET และ JSON response สำหรับ FastAPI ข้อ 5",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{"key": "baseUrl", "value": "http://127.0.0.1:8000"}],
+  "item": [
+    {
+      "name": "GET /api/zoo-visitors",
+      "request": {"method": "GET", "header": [], "url": "{{baseUrl}}/api/zoo-visitors?limit=5"},
+      "event": [{"listen": "test", "script": {"exec": [
+        "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });",
+        "pm.test('JSON data present', function () { var d=pm.response.json(); pm.expect(d.data).to.be.an('array'); pm.expect(d.resource_id).to.be.a('string'); });"
+      ]}}]
+    },
+    {"name": "GET /docs", "request": {"method": "GET", "header": [], "url": "{{baseUrl}}/docs"}}
+  ]
+}
